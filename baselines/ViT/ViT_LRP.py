@@ -34,7 +34,7 @@ default_cfgs = {
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_224-4ee7a4dc.pth',
         mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)),
     'vit_fox_nyt': _cfg(
-        url='https://drive.google.com/file/d/1-XL6dhzVr41iYNEZmI_3VvjPcIVh_IkZ/view?usp=drive_link',
+        url='https://drive.google.com/file/d/1FpJpbm4Cb8NNuVYZPh0DVaSZEJLQNXit/view?usp=drive_link',
         mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5),
     ),
 }
