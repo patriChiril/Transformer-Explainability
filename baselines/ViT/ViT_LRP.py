@@ -33,6 +33,10 @@ default_cfgs = {
     'vit_large_patch16_224': _cfg(
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_224-4ee7a4dc.pth',
         mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)),
+    'vit_fox_nyt': _cfg(
+        url='https://drive.google.com/file/d/1-XL6dhzVr41iYNEZmI_3VvjPcIVh_IkZ/view?usp=drive_link',
+        mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5),
+    ),
 }
 
 def compute_rollout_attention(all_layer_matrices, start_layer=0):
@@ -422,6 +426,15 @@ def vit_large_patch16_224(pretrained=False, **kwargs):
     model.default_cfg = default_cfgs['vit_large_patch16_224']
     if pretrained:
         load_pretrained(model, num_classes=model.num_classes, in_chans=kwargs.get('in_chans', 3))
+    return model
+
+def vit_fox_nyt(pretrained=False, **kwargs):
+    model = VisionTransformer(
+        patch_size=16, embed_dim=768, depth=12, num_heads=12, mlp_ratio=4, qkv_bias=True, **kwargs)
+    model.default_cfg = default_cfgs['vit_fox_nyt']
+    if pretrained:
+        load_pretrained(
+            model, num_classes=model.num_classes, in_chans=kwargs.get('in_chans', 3), filter_fn=_conv_filter)
     return model
 
 def deit_base_patch16_224(pretrained=False, **kwargs):
